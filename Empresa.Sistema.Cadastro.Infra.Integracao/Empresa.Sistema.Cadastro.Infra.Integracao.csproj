@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Proxy\PetstoreApiClient.json">
+    <None Update="ServiceDescriptor\PetstoreApiClient.json">
       <Generator>AutoRestCodeGenerator</Generator>
       <LastGenOutput>PetstoreApiClient.cs</LastGenOutput>
     </None>
