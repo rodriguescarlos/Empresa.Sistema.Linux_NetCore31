@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DapperExtensions.DotnetCore" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared\Empresa.Sistema.Infra.Shared.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Domain\Empresa.Sistema.Cadastro.Domain.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Infra.Data\Empresa.Sistema.Infra.Shared.Data.csproj" />
+  </ItemGroup>
+
+</Project>

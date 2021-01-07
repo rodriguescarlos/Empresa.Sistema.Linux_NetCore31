@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  empresa.sistema.cadastro.api:
+    image: crodrigues/apicadastro:latest
+    build:
+      context: .
+      dockerfile: Empresa.Sistema.Mensageiro.API/Dockerfile
+    environment:
+        ASPNETCORE_ENVIRONMENT: Development
+        MSSQL_HOST: "192.168.56.1,1433"
+        MSSQL_DB: Estudo
+        MSSQL_USERNAME: "apiusr"
+        MSSQL_PASSWORD: "12345678"
+    ports:
+      - "1238:80"
+    network:
+      - "redelocal"
+    depends_on:
+      - db
+
+networks:
+  redelocal:
+    driver: bridge
+ 

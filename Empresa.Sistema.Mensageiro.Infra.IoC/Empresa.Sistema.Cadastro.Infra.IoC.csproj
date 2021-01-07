@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\Empresa.Sistema.Cadastro.Infra.Data\Empresa.Sistema.Cadastro.Infra.Data.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Cadastro.Infra.Integracao\Empresa.Sistema.Cadastro.Infra.Integracao.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared\Empresa.Sistema.Infra.Shared.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Application\Empresa.Sistema.Cadastro.Application.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Domain\Empresa.Sistema.Cadastro.Domain.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Infra.Data\Empresa.Sistema.Infra.Shared.Data.csproj" />
+  </ItemGroup>
+
+</Project>

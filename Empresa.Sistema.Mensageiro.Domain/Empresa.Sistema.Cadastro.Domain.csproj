@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared.Logging\Empresa.Sistema.Infra.Shared.Logging.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared\Empresa.Sistema.Infra.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

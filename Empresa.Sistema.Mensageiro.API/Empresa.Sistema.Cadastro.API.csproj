@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EmpresaSistemaAPI.log" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+
+	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.5.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Empresa.Sistema.Cadastro.Infra.Data\Empresa.Sistema.Cadastro.Infra.Data.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared.Logging\Empresa.Sistema.Infra.Shared.Logging.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared\Empresa.Sistema.Infra.Shared.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Application\Empresa.Sistema.Cadastro.Application.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Domain\Empresa.Sistema.Cadastro.Domain.csproj" />
+    <ProjectReference Include="..\Empresa.Sistema.Mensageiro.Infra.IoC\Empresa.Sistema.Cadastro.Infra.IoC.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions>
+	  <VisualStudio>
+		  <UserProperties properties_4launchsettings_1json__JsonSchema="" />
+	  </VisualStudio>
+  </ProjectExtensions>
+
+</Project>

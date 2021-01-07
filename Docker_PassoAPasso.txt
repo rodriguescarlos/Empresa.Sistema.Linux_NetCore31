@@ -1,0 +1,112 @@
+http://www.macoratti.net/19/05/dock_aspnimg2.htm
+http://www.macoratti.net/19/02/dock_limp1.htm
+
+Remover cache
+	docker system prune -a
+
+Docker File: 
+
+A cláusula o FROM indica qual imagem iremos utilizar, neste caso php 7.3 com servidor web apache.
+O comando Copy copia os arquivos do host para o container, ou seja, está copiando todos arquivos da raiz do nosso diretório para o diretório público do Apache.
+O comando Expose indica em qual porta o container estará funcionando.
+A cláusula CMD será executado assim que o container iniciar sua execução e deve se manter sempre no final do Dockerfile. No nosso caso estamos iniciando a execução do servidor Apache.
+
+1. Acessando o repositório do .NET Core SDK no link https://hub.docker.com/_/microsoft-dotnet-core-sdk/ temos as informações a seguir:
+
+docker pull <imagem>
+
+docker pull mcr.microsoft.com/dotnet/core/sdk:2.2
+
+2. O build não trabalha com o caminho do arquivo, apenas com o seu diretório, então é preciso informar o caminho do diretório ou, no nosso caso, como estamos no diretório onde se localiza o Dockerfile, apenas um ponto(.) para identificar que o Dockerfile está no diretório atual.
+
+docker build -t crodrigues/apicadastro:1.0 .
+docker build -t crodrigues/apicadastro:latest .
+
+docker build --no-cache -t crodrigues/apicadastro:1.0 .
+
+docker ps -a lisar containers em execução
+
+
+docker run --name testeapienv01 -e MENSAGEM="Teste via docker run" -p 20001:80 -d api-environment
+
+docker run --name apianp02 -p 1235:80 -d Empresa.Sistema/ApiCadastro
+
+docker run --name crodrigues/apicadastro -p 1238:80 -d Empresa.Sistema/ApiCadastro
+
+conectar a um container 
+docker exec -it <id Container> <comando>
+ex.:
+docker exec -it a427ff11ecf4 bash
+
+https://renatogroffe.medium.com/docker-dica-r%C3%A1pida-conectando-a-um-container-em-execu%C3%A7%C3%A3o-5648e5a90161
+
+
+criar subrede para o docker e o host (fazendo o container enxergar o sql server do host)
+
+docker network create --driver=bridge --subnet=192.168.0.0/24 --gateway=192.168.0.1 redelocal
+
+https://danieldonda.com/2017/05/17/docker-configurando-rede/
+
+docker run --net=redelocal -itd --name=apicadastro
+
+Subir container apontando para a rede criada
+
+docker run --name apicadastro -p 1238:80 -d crodrigues/apicadastro:latest --net=redelocal
+
+##################################################
+docker build docker build -t crodrigues/apicadastro:latest .
+
+docker run --name apicadastro -p 1238:80 -d crodrigues/apicadastro:latest --net=redelocal
+
+docker ps
+
+docker run --name apicadastro -e "ASPNETCORE_ENVIRONMENT=Development" -e "DatabaseConnection__connectionString=Server=192.168.56.1,1433;Database=Estudo;UID=apiusr;PWD=12345678;" -p 1238:80 -d crodrigues/apicadastro:latest --net=redelocal
+
+##################################################
+
+Para resolver o problema com a conexão ssl com o sql server(
+Unhandled Exception: System.Data.SqlClient.SqlException: A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 35 - An internal exception was caught) ---> System.Security.Authentication.AuthenticationException: A call to SSPI failed, see inner exception. ---> Interop+OpenSsl+SslException: SSL Handshake failed with OpenSSL error - SSL_ERROR_SSL. --->
+)
+foi necessário instalar o service pack 2 do sql server pois por default o sql server não data suporte ao protocolo ssl 1.1 e 1.2
+
+https://stackoverflow.com/questions/48145881/can-not-connect-to-sql-server-from-docker-supported-asp-net-core-project
+https://github.com/dotnet/runtime/issues/17619
+https://support.microsoft.com/en-us/help/3135244/kb3135244-tls-1-2-support-for-microsoft-sql-server
+
+Subir SQL SERVER
+
+docker run --name sqlserver2017local -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=sa' -p 1434:1433 -v /mnt/c/Program Files (x86)/Microsoft SQL Server/MSSQL12.MSSQLCJOR/MSSQL/data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2017-latest
+
+
+
+los em containers
+https://docs.microsoft.com/pt-br/aspnet/core/fundamentals/logging/?view=aspnetcore-5.0
+
+#######################################
+Listar variáveis de ambiente
+#######################################
+
+# printenv
+
+########################################
+Saber a versão do linux
+#########################################
+
+# cat /etc/*-release
+
+###########################################
+ver a arquitetura do processador no linux
+
+# uname –a
+
+##########################################
+
+####################
+instalar ping 
+####################
+apt-get update && apt-get install -y iputils-ping
+
+
+openssl s_client -connect 192.168.56.1:1433 -msg
+
+tcpdump -s 0 -n dst host {ip address here} -w linux-sql.pcap 

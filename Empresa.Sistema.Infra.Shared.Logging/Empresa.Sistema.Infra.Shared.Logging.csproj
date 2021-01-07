@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Domain\LoggingArgument.cs" />
+    <Compile Remove="Domain\LoggingContextDetails.cs" />
+    <Compile Remove="Domain\LoggingInputsData.cs" />
+    <Compile Remove="Domain\LoggingOutputsData.cs" />
+    <Compile Remove="Domain\LoggingReturnValueData.cs" />
+    <Compile Remove="Domain\LoggingType.cs" />
+    <Compile Remove="Interface\ILoggingStrategy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.10" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Empresa.Sistema.Infra.Shared\Empresa.Sistema.Infra.Shared.csproj" />
+  </ItemGroup>
+</Project>
